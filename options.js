@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-var PERMISSIONS = {origins: ['http://api.stackoverflow.com/']};
+var PERMISSIONS = {origins: ['https://api.stackexchange.com/']};
 var YES = 'ENABLED';
 var NO = 'DISABLED';
 

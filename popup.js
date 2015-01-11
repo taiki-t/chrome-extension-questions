@@ -2,9 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-var PERMISSIONS = {origins: ['http://api.stackoverflow.com/']};
-var URL = 'http://api.stackoverflow.com/1.1/questions?max=10&sort=votes&tagged=google-chrome-extension';
-var ROOT = 'http://stackoverflow.com';
+var PERMISSIONS = {origins: ['https://api.stackexchange.com/']};
+var URL = 'https://api.stackexchange.com/2.2/search?page=1&pagesize=10&order=desc&sort=activity&tagged=google-chrome-extension&site=stackoverflow';
+var ROOT = 'https://api.stackexchange.com';
 
 chrome.permissions.contains(PERMISSIONS, function(result) {
   if (!result) {
@@ -33,11 +33,11 @@ function makeRequest(callback) {
 
 function renderQuestions(data) {
   var $results = document.querySelector('#results');
-  var questions = data.questions;
+  var questions = data.items;
   for (var i = 0; i < Math.min(10, questions.length); i++) {
     var question = questions[i];
     var $question = document.createElement('li');
-    var url = ROOT + question.question_answers_url;
+    var url = question.link;
     $question.innerHTML = '<a href="' + url + '" target="_blank">' +
         question.title + '</a>';
     results.appendChild($question);
